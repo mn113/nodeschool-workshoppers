@@ -1,7 +1,7 @@
 /* http client which POSTs data to a url and outputs response
  *
  * Syntax:
- * node 09_httpclient.js
+ * node 08_httpclient.js
  */
 
 var http = require('http'),

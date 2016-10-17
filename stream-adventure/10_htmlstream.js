@@ -1,7 +1,7 @@
 /* Receive HTML, set the innerHTML of elements with class 'loud' to uppercase
  *
  * Syntax:
- * node 11_htmlstream.js
+ * node 10_htmlstream.js
  */
 
 var through = require('through2'),

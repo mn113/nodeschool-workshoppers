@@ -1,7 +1,7 @@
 /* print string "hello\n" using websockets and browserify
  *
  * Syntax:
- * node 10_websockets.js
+ * node 09_websockets.js
  */
 
 var ws = require('websocket-stream');
