@@ -1,3 +1,3 @@
 module.exports = function (str) {
-	return /^LITERALLY/.test(str);
+	return /BANANAS$/.test(str);
 };
