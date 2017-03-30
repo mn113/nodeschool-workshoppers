@@ -1,3 +1,3 @@
 module.exports = function (str) {
-	return /^[aeiou0-9]/.test(str);
+	return /^[^0-9][^A-Z]/.test(str);
 };
