@@ -11,5 +11,17 @@ var sortBy = function(list) {
 	return _.sortBy(list, 'quantity').reverse();
 };
 
+// 03. Foreach on Objects:
+var forEach = function(collection) {
+	_.forEach(collection, function(town) {
+		if (town.population > 1) town.size = 'big';
+		else if (town.population > 0.5) town.size = 'med';
+		else town.size = 'small';
+
+		return town;
+	});
+	return collection;
+};
+
 // export the worker function as a nodejs module
-module.exports = sortBy;
+module.exports = forEach;
