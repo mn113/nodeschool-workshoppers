@@ -54,5 +54,22 @@ var chainer = function(words) {
 			.value();
 };
 
+// 06. groupBy & size:
+var commentGrouper = function(comments) {
+	// Group comments by username:
+	var grouped = _.groupBy(comments, 'username');
+
+	// Map to include the size:
+	var counted = _.map(grouped, function(group, key) {
+		return {
+			username: key,
+			comment_count: _.size(group)
+		};
+	});
+
+	// Sort descending:
+	return _.sortBy(counted, 'comment_count').reverse();
+};
+
 // export the function for the exercise we are doing as a nodejs module:
-module.exports = chainer;
+module.exports = commentGrouper;
