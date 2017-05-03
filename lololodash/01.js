@@ -1,3 +1,4 @@
+/* esversion: 6 */
 // include the Lo-Dash library
 var _ = require("lodash");
 
@@ -23,5 +24,26 @@ var forEach = function(collection) {
 	return collection;
 };
 
-// export the worker function as a nodejs module
-module.exports = forEach;
+// 04. _.every() and _.some() on a list of towns:
+var warmOrHot = function(towns) {
+	var warm = [],
+		hot = [];
+
+	_.forEach(Object.keys(towns), function(name) {
+		var temperatures = towns[name];
+		if (_.every(temperatures, (temp) => temp > 19)) {
+			hot.push(name);
+		}
+		else if (_.some(temperatures, (temp) => temp > 19)) {
+			warm.push(name);
+		}
+	});
+
+	return {
+		hot: hot,
+		warm: warm
+	};
+};
+
+// export the function for the exercise we are doing as a nodejs module:
+module.exports = warmOrHot;
