@@ -45,5 +45,14 @@ var warmOrHot = function(towns) {
 	};
 };
 
+// 05. _.chain()ing methods:
+var chainer = function(words) {
+	return _.chain(words)
+			.map(word => word.toUpperCase())
+			.map(word => word + 'CHAINED')
+			.sortBy()
+			.value();
+};
+
 // export the function for the exercise we are doing as a nodejs module:
-module.exports = warmOrHot;
+module.exports = chainer;
