@@ -73,19 +73,25 @@ var commentGrouper = function(comments) {
 
 // 07. reduce:
 var reducer = function(orders) {
-	var final = {};
-
+	// Group orders by article_id:
 	var grouped = _.groupBy(orders, 'article');
-	console.log(grouped);
 
-	var reduced = _.forEach(grouped, function(entry) {
-		final[entry] = _.reduce(entry, function(result, value, key) {
-			result[key] += value;
-		}, {});
+	var reduced = [];
+	_.forEach(grouped, function(contentsArr, artKey) {
+		// Reduce one group, to sum all quantities within it:
+		var totalQuantity = _.reduce(contentsArr,
+			function(accum, value) {
+				return accum + value.quantity;
+			},
+		0);
+		// Save total in a new order list:
+		reduced.push({
+			article: parseInt(artKey),
+			total_orders: totalQuantity
+		});
 	});
-	console.log(reduced);
 
-	return _.sortBy(reduced, 'orders');
+	return _.sortBy(reduced, 'total_orders').reverse();
 };
 
 // export the function for the exercise we are doing as a nodejs module:
