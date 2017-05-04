@@ -71,5 +71,22 @@ var commentGrouper = function(comments) {
 	return _.sortBy(counted, 'comment_count').reverse();
 };
 
+// 07. reduce:
+var reducer = function(orders) {
+	var final = {};
+
+	var grouped = _.groupBy(orders, 'article');
+	console.log(grouped);
+
+	var reduced = _.forEach(grouped, function(entry) {
+		final[entry] = _.reduce(entry, function(result, value, key) {
+			result[key] += value;
+		}, {});
+	});
+	console.log(reduced);
+
+	return _.sortBy(reduced, 'orders');
+};
+
 // export the function for the exercise we are doing as a nodejs module:
-module.exports = commentGrouper;
+module.exports = reducer;
