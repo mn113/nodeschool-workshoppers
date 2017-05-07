@@ -94,7 +94,7 @@ var reducer = function(orders) {
 	return _.sortBy(reduced, 'total_orders').reverse();
 };
 
-// 08. filter with a callback function
+// 08. filter with a callback function:
 var filterOnIncome = function(people) {
 	// Mean income = total / number:
 	var mean = _.reduce(people,
@@ -114,5 +114,10 @@ var filterOnIncome = function(people) {
 	};
 };
 
+// 09. templating:
+var templateThis = function(input) {
+	return _.template('Hello <%= name %> (logins: <%= login.length %>)')(input);
+};
+
 // export the function for the exercise we are doing as a nodejs module:
-module.exports = filterOnIncome;
+module.exports = templateThis;
