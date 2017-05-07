@@ -94,5 +94,25 @@ var reducer = function(orders) {
 	return _.sortBy(reduced, 'total_orders').reverse();
 };
 
+// 08. filter with a callback function
+var filterOnIncome = function(people) {
+	// Mean income = total / number:
+	var mean = _.reduce(people,
+		function(accum, person) {
+			return accum + person.income;
+		},
+		0
+	) / _.size(people);
+
+	var underperform = _.filter(people, person => person.income <= mean);
+	var overperform = _.filter(people, person => person.income > mean);
+
+	return {
+		average: mean,
+		underperform: _.sortBy(underperform, 'income'),
+		overperform: _.sortBy(overperform, 'income')
+	};
+};
+
 // export the function for the exercise we are doing as a nodejs module:
-module.exports = reducer;
+module.exports = filterOnIncome;
